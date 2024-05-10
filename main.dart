@@ -1,8 +1,7 @@
 import 'dart:io';
-// import 'teacher.dart';
-// import 'student.dart';
-// import 'admin.dart';
 import 'login.dart';
+import 'signUp.dart';
+
 
 void main(){ 
   print("********LEARNING MANAGEMENT SYSTEM********");
@@ -26,8 +25,15 @@ void main(){
 
   }
 
+ // for signup
+     else if(inp == 2){
+
+    signUP();
+    break;
+
+
+
   }
- 
 
-
+  }
 }
