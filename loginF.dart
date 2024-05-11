@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'announcement.dart';
+
 
 void login(String userName, String pass) {
   File teachersFile = File('teachersCred.txt');
@@ -16,7 +18,21 @@ void login(String userName, String pass) {
     var splitted = line.split(',');
     if (splitted.length == 2 && splitted[0] == userName && splitted[1] == pass) {
       print("Teacher login successful");
-      isLoggedIn = true;   
+      isLoggedIn = true;  
+
+        // Implement Teacher portal functionality here
+
+        print("*********************");
+        print("1.Make Announcements");
+        print("2.Upload Assginments");
+        print("3.Upload Quizes");
+        print("4.View Quizes");
+
+        int input = int.parse(stdin.readLineSync()!);
+
+        if(input == 1){
+          showAnnouncements();
+        }
       break;
     }
   }
@@ -41,7 +57,8 @@ void login(String userName, String pass) {
 
 // Announcement Section
        if(input == 1){
-        print("No Announcements yet"); 
+        // print("No Announcements yet"); 
+        displayAnnouncements();
         break;
       }
 // Courses Section
