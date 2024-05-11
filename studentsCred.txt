@@ -10,10 +10,4 @@ Taniya Ali,tA098@123
 
 Saad Butt,098Sb@312
 
-null,null
-
-null,null
-
-null,null
-
 Aqsa Bilal,098Azz@123
