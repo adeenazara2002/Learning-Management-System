@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'announcement.dart';
 import 'addCourses.dart';
+// import 'attemptQuiz.dart';
 import 'enrollment.dart';
-
 
 void login(String userName, String pass) {
   File teachersFile = File('teachersCred.txt');
@@ -31,16 +31,25 @@ void login(String userName, String pass) {
       print("1.Make Announcements");
       print("2.Upload Assginments");
       print("3.Upload Quizes");
-      print("4.View Quizes");
+      // print("4.View quiz attempts");
       print("Enter Your Choice: ");
-
 
       int input = int.parse(stdin.readLineSync()!);
 
       if (input == 1) {
         showAnnouncements();
+        break;
       }
-      break;
+
+      if (input == 2) {
+        print("Upload Assignmnets");
+        break;
+      }
+
+      if (input == 3) {
+        print("Upload Quiz");
+        break;
+      }
     }
   }
 
@@ -63,7 +72,6 @@ void login(String userName, String pass) {
         print("3.View Courses");
         print("4.View Assignments");
         print("Enter Your Choice: ");
-
 
         int input = int.parse(stdin.readLineSync()!);
 
@@ -99,6 +107,7 @@ void login(String userName, String pass) {
               print("Quiz Start");
               print("");
               int score = 0;
+              // int quizAttempts = 0;
               print("INSTRUCTIONS: Type only number against correct answer");
               print("");
               print("Q1 - What is Dart?");
@@ -140,6 +149,7 @@ void login(String userName, String pass) {
                 print("Correct Answer");
                 score++;
                 print("Your final score of the quiz is: $score");
+                // quizAttempts++;
                 break;
               }
             }
@@ -171,48 +181,41 @@ void login(String userName, String pass) {
         print("Admin login successful");
         isLoggedIn = true;
 
-        // Implement student portal functionality here
-        // looping
-        
-          print("Admin Portal");
-          print("*********************");
-          print("1.Add Courses");
-          print("2.Enroll Students");
-          print("3.List Courses");
-          print("4.List Students");
+        // Implement admin portal functionality here
 
+        print("Admin Portal");
+        print("*********************");
+        print("1.Add Courses");
+        print("2.Enroll Students");
+        print("3.List Courses");
+        print("4.List Students");
 
-          // print("4. Exit");
-          print("Enter Your Choice: ");
+        // print("4. Exit");
+        print("Enter Your Choice: ");
 
-          // print("4.View Assignments");
+        // print("4.View Assignments");
 
-          int adminReply = int.parse(stdin.readLineSync()!);
-          if (adminReply == 1) {
-            addCourses();
-            break;
-      
-          }
+        int adminReply = int.parse(stdin.readLineSync()!);
+        if (adminReply == 1) {
+          addCourses();
+          break;
+        }
 
-          if (adminReply == 3) {
-            displayCourses();
-            break;
-            
-          }
+        if (adminReply == 3) {
+          displayCourses();
+          break;
+        }
 
-          
-          if (adminReply == 2) {
-            enroll();
-            break;
-            
-          }
+        if (adminReply == 2) {
+          enroll();
+          break;
+        }
 
-            if (adminReply == 4) {
-            seeEnrollments();
-            break;
-            
-          }
-        
+        if (adminReply == 4) {
+          seeEnrollments();
+          break;
+        }
+
         break;
       }
     }
