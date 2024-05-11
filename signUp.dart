@@ -1,37 +1,72 @@
 import 'dart:io';
-void main(){
-
-
-}
 
 void signUP(){
 
-  List<int> digits = [0,1,2,3,4,5,6,7,8,9];
-  List<String> specialChar = ['!','@','%','^','&','{','}','(',')','.','"'];
+  String? username;
+  String? password;
 
-    print("Enter User Name");
-    String username = (stdin.readLineSync()!);
+  do{
 
-    print("Enter Password");
-    String password = (stdin.readLineSync()!);
+    print("Enter Username");
+    username = (stdin.readLineSync()!);
 
-    if(username == '1234567890' && username == '£!@%^&*+_()-/><~&'){
-      print("User names only contains alphabets"); 
-      if(password == password.toUpperCase() || password == password.toLowerCase()){
-        print("Password must contains:");
-        print("Any uppercase alphabets");
-        print("Any lowercase alphabets");
-        print("Atleast one special character");
-        print("Any digit");
-      }
-      else if(username == username.toUpperCase() && username == username.toLowerCase() && password == password.toUpperCase() && password == password.toLowerCase() && password == '1234567890'){
-
-      }
+      if(username.isEmpty){
+      print("Username cannot be empty");
+      continue;
     }
 
+    // validation for username
 
-    File sign = File('signUp.txt');
-    String content = '$username,$password\n';
+    List<String> firstSecondName = username.split(' ');
+ 
+    if(firstSecondName.length != 2){
+      print("Enter both first and second names seperatetd by space");
+      continue;
+    }
+
+    String firstName = firstSecondName[0];
+    String secondName = firstSecondName[1]; 
+
+    if (!RegExp(r'^[a-zA-Z]+$').hasMatch(firstName) || !RegExp(r'^[a-zA-Z]+$').hasMatch(secondName)) 
+      {
+    print("Usernames can only contain alphabets.");
+    continue;
+  }
+break;
+
+  }while(true);
+
+
+do{
+
+    print("Enter Password");
+    password = (stdin.readLineSync()!);
+
+      // Validation for password
+
+       if(password.isEmpty){
+      print("Password cannot be empty");
+      continue;
+    }
+
+  if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@%^&*(){}[\]:;<>,./?~_+\-=|"\\]).{8,}$').hasMatch(password)) {
+    print("Password must contain:");
+    print("- At least 8 characters");
+    print("- At least one uppercase letter");
+    print("- At least one lowercase letter");
+    print("- At least one digit");
+    print("- At least one special character");
+    continue;
+
+  }
+   break;
+
+}while(true);
+
+  // Filing
+
+    File sign = File('studentsCred.txt');
+    String content = '\n$username,$password\n';
     sign.writeAsStringSync(content, mode: FileMode.append);
     print("Account created Successfully");
 }

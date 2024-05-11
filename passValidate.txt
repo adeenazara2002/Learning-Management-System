@@ -1,0 +1,8 @@
+// ^: Asserts the start of the line.
+// (?=.*?[A-Z]): Positive lookahead to ensure there is at least one uppercase letter ([A-Z]).
+// (?=.*?[a-z]): Positive lookahead to ensure there is at least one lowercase letter ([a-z]).
+// (?=.*?[0-9]): Positive lookahead to ensure there is at least one digit ([0-9]).
+// (?=.*?[!@#\$&*~]): Positive lookahead to ensure there is at least one special character (!@#\$&*~).
+// .{8,}: Matches any character (except for line terminators) at least 8 times. This ensures the password is at least 8 characters long.
+// $: Asserts the end of the line.
+// RegExp is a built-in class in dart
